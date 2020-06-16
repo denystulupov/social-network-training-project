@@ -1,0 +1,22 @@
+.header {
+    background-color: #4a76a8;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.header .logo{
+    display: flex;
+    align-items: baseline;
+    margin-left: 20px;
+    color: white;
+}
+
+.header .logo span{
+    font-size: 40px;
+}
+
+.header .logo h1{
+    font-size: 40px;
+    margin-left: 20px;
+}
+
