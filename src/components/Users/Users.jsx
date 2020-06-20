@@ -1,48 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react';
 import styles from './Users.module.css';
-import * as axios from 'axios';
 import userAvatar from '../../assets/images/image.png'
+import Spinner from "../Spinner/Spinner";
 
+const Users = props => {
 
-class Users extends Component {
-
-    componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(responce => {
-                this.props.setUsers(responce.data.items);
-                this.props.setUsersCount(responce.data.totalCount)
-            })
+    let pagesCount = Math.ceil(props.usersCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
 
-    onPageChange(pageNumber) {
-        console.log(pageNumber)
-        this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(responce => {
-                this.props.setUsers(responce.data.items);
-            })
-    }
-
-    render() {
-        let pagesCount = Math.ceil(this.props.usersCount / this.props.pageSize);
-        let pages = [];
-        for (let i = 1; i <= pagesCount; i++) {
-            pages.push(i);
-        }
-        return (
+    return (
+        <div>
             <div>
-                <div>
-                    { pages.map(p => {
-                        return <span
-                            key={p}
-                            onClick={() => this.onPageChange(p)}
-                            className={`${styles.page} ${this.props.currentPage === p ? styles.selectedPage : ""}`}
-                        >{p}</span>
-                    })}
-                </div>
+                {pages.map(p => {
+                    return <span
+                        key={p}
+                        onClick={() => props.onPageChange(p)}
+                        className={`${styles.page} ${props.currentPage === p ? styles.selectedPage : ""}`}
+                    >{p}</span>
+                })}
+            </div>
 
-                {
-                    this.props.users.map(u =>
+            {
+                props.isLoading
+                    ? <Spinner/>
+                    : props.users.map(u =>
                         <div key={u.id}>
                             <span>
                                 <div>
@@ -51,15 +35,15 @@ class Users extends Component {
                                 <div>
                                     {u.followed
                                         ? <button onClick={() => {
-                                            this.props.unfollow(u.id)
+                                            props.unfollow(u.id)
                                         }}>Unfollow</button>
                                         : <button onClick={() => {
-                                            this.props.follow(u.id)
+                                            props.follow(u.id)
                                         }}>Follow</button>}
 
                                 </div>
                             </span>
-                                    <span>
+                            <span>
                                 <span>
                                     <div>{u.name}</div>
                                     <div>{u.status}</div>
@@ -70,10 +54,9 @@ class Users extends Component {
                                 </span>
                             </span>
                         </div>)
-                }
-            </div>
-        )
-    }
-}
+            }
+        </div>
+    )
+};
 
 export default Users;
