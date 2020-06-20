@@ -1,0 +1,16 @@
+.userPhoto {
+     width: 100px;
+    height: 100px;
+}
+
+.page{
+    margin: 0 2px;
+}
+
+.page:hover{
+    cursor: pointer;
+}
+
+.selectedPage{
+    font-weight: bold;
+}
