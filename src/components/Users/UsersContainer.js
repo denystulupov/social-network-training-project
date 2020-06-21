@@ -1,14 +1,7 @@
 import React, {Component} from 'react';
 import Users from "./Users";
 import {connect} from "react-redux";
-import {
-    followAC,
-    setCurrentPageAC,
-    setIsLoadingAC,
-    setUsersAC,
-    setUsersCountAC,
-    unfollowAC
-} from "../../reducers/users-reducer";
+import { follow, setCurrentPage, setIsLoading, setUsers, setUsersCount, unfollow } from "../../reducers/users-reducer";
 import * as axios from "axios";
 
 class UsersContainer extends Component {
@@ -55,27 +48,5 @@ let mapStateToProps = (state) => {
     }
 };
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: currentPage => {
-            dispatch(setCurrentPageAC(currentPage))
-        },
-        setUsersCount: usersCount => {
-            dispatch(setUsersCountAC(usersCount))
-        },
-        setIsLoading: isLoading => {
-            dispatch(setIsLoadingAC(isLoading))
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps,
+    { follow, setCurrentPage, setIsLoading, setUsers, setUsersCount, unfollow})(UsersContainer);

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Users.module.css';
 import userAvatar from '../../assets/images/image.png'
 import Spinner from "../Spinner/Spinner";
+import {NavLink} from "react-router-dom";
 
 const Users = props => {
 
@@ -26,34 +27,36 @@ const Users = props => {
             {
                 props.isLoading
                     ? <Spinner/>
-                    : props.users.map(u =>
-                        <div key={u.id}>
-                            <span>
-                                <div>
-                                    <img src={u.photos.small || userAvatar} className={styles.userPhoto} alt=""/>
-                                </div>
-                                <div>
-                                    {u.followed
-                                        ? <button onClick={() => {
-                                            props.unfollow(u.id)
-                                        }}>Unfollow</button>
-                                        : <button onClick={() => {
-                                            props.follow(u.id)
-                                        }}>Follow</button>}
+                    : <div className={styles.users}>{
+                        props.users.map(u =>
+                            <div key={u.id} className={styles.user}>
+                                <span>
+                                    <div>
+                                        <NavLink to={"/profile/" + u.id}>
+                                            <img src={u.photos.small || userAvatar} className={styles.userPhoto}
+                                                 alt=""/>
+                                        </NavLink>
+                                    </div>
+                                    <div>
+                                        {u.followed
+                                            ? <button onClick={() => {
+                                                props.unfollow(u.id)
+                                            }}>Unfollow</button>
+                                            : <button onClick={() => {
+                                                props.follow(u.id)
+                                            }}>Follow</button>}
 
-                                </div>
-                            </span>
-                            <span>
-                                <span>
-                                    <div>{u.name}</div>
-                                    <div>{u.status}</div>
+                                    </div>
                                 </span>
                                 <span>
-                                    <div>u.location.country</div>
-                                    <div>u.location.city</div>
+                                    <span>
+                                        <div>{u.name}</div>
+                                        <div>{u.status}</div>
+                                    </span>
                                 </span>
-                            </span>
-                        </div>)
+                            </div>)
+                    }
+                    </div>
             }
         </div>
     )
