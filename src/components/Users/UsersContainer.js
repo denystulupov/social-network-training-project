@@ -8,19 +8,21 @@ class UsersContainer extends Component {
 
     componentDidMount() {
         this.props.setIsLoading(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then(responce => {
-                this.props.setUsers(responce.data.items);
-                this.props.setUsersCount(responce.data.totalCount)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+            {withCredentials: true})
+            .then(response => {
+                this.props.setUsers(response.data.items);
+                this.props.setUsersCount(response.data.totalCount)
             })
     }
 
     onPageChange = (pageNumber) => {
         this.props.setIsLoading(true);
         this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(responce => {
-                this.props.setUsers(responce.data.items);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
+            {withCredentials: true})
+            .then(response => {
+                this.props.setUsers(response.data.items);
             })
     }
 

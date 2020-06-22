@@ -2,13 +2,15 @@
     background-color: #4a76a8;
     height: 60px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
 }
 
 .header .logo{
     display: flex;
     align-items: baseline;
     margin-left: 20px;
-    color: white;
 }
 
 .header .logo span{
@@ -18,5 +20,10 @@
 .header .logo h1{
     font-size: 40px;
     margin-left: 20px;
+}
+
+.header .login{
+    padding-top: 20px;
+    padding-right: 20px;
 }
 
