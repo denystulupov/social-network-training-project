@@ -13,12 +13,12 @@ const Dialogs = (props) => {
 
     let onSendMessageClick = () => {
         props.sendMessage();
-    }
+    };
 
     let onNewMessageChange = (e) => {
         let body = e.target.value;
         props.updateNewMessageBody(body);
-    }
+    };
 
     return (
         <div className={s.dialogs}>
@@ -28,9 +28,11 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 <div>{ messagesElements }</div>
                 <div>
-                    <div><textarea value={newMessageBody}
+                    <div>
+                        <textarea value={newMessageBody}
                                    onChange={onNewMessageChange}
-                                   placeholder='Enter your message'></textarea></div>
+                                   placeholder='Enter your message'/>
+                    </div>
                     <div><button onClick={onSendMessageClick}>Send</button></div>
                 </div>
             </div>
