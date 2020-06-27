@@ -4,12 +4,11 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import Spinner from "../Spinner/Spinner";
 
 const Profile = props => {
-
     if(!props.userProfile) return <Spinner/>;
 
     return (
         <div>
-            <ProfileInfo userProfile={props.userProfile} />
+            <ProfileInfo {...props} />
             <MyPostsContainer />
         </div>
     )
