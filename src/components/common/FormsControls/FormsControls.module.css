@@ -1,0 +1,16 @@
+.formControl textarea{
+    padding: 3px;
+}
+.formControl textarea:focus,
+.formControl input:focus{
+    outline: none;
+}
+.formControl.error input,
+.formControl.error textarea{
+    border: 2px solid red;
+}
+
+.formControl.error span
+{
+    color: red;
+}
