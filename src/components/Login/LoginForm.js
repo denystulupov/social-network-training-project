@@ -21,6 +21,9 @@ const LoginForm = props => {
                 <label htmlFor="rememberMe">Remember me</label>
                 <Field id="rememberMe" name='rememberMe' component='input' type='checkbox'/>
             </div>
+            {
+                props.error && <div className={classes.error}>{props.error}</div>
+            }
 
             <div className={classes.items}>
                 <button>Login</button>
