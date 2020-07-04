@@ -5,10 +5,6 @@ import {getAuthUserData, logout} from "../../reducers/auth-reducer";
 
 class HeaderContainer extends Component{
 
-    componentDidMount() {
-        this.props.getAuthUserData()
-    }
-
     render() {
         return <Header {...this.props}/>
     }
