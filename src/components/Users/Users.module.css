@@ -1,17 +1,5 @@
-.page{
-    margin: 0 2px;
-}
-
-.page:hover{
-    cursor: pointer;
-}
-
-.selectedPage{
-    font-weight: bold;
-}
-
 .users{
-    padding-top: 20px;
+    padding: 20px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
