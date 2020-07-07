@@ -4,6 +4,8 @@ import Post from './Post/Post';
 import AddPostForm from "./AddPostForm/AddPostForm";
 
 const MyPosts = (props) => {
+
+    console.log('POSTS');
     let postsElements =
         props.posts.map( p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
 
