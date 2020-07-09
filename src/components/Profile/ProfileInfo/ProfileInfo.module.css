@@ -1,3 +1,13 @@
 .descriptionBlock {
     padding: 10px;
 }
+
+.profileInfo{
+    display: flex;
+}
+
+.aboutMe div{
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
